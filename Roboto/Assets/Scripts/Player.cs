@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+//using UnityEngine.InputSystem;
 
 /*This script handles all controllable actions by the player. */
 
@@ -13,10 +13,10 @@ public class Player : Robot
     public float vx, vy, vz;        //movement values. moveSpeed modifies these
     Vector3 moveDirection;
 
-    [Header("Inputs")]
-    public PlayerInput playerControls;
-    InputAction move;
-    InputAction fireWeapon;
+    //[Header("Inputs")]
+    //public PlayerInput playerControls;
+    //InputAction move;
+    //InputAction fireWeapon;
 
 
     // Start is called before the first frame update
@@ -58,7 +58,7 @@ public class Player : Robot
     }
 
     #region Controls
-    public void MoveForward(InputAction.CallbackContext context)
+    /*public void MoveForward(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
@@ -126,7 +126,7 @@ public class Player : Robot
             Debug.Log("fire!");
         }
 
-    }
+    }*/
 
     #endregion
 }
