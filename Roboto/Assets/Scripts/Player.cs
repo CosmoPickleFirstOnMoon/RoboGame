@@ -10,6 +10,7 @@ public class Player : Robot
     public Rigidbody rb;
     public float baseMoveSpeed {get;} = 10f;
     public float moveSpeed;
+    public float vx, vy, vz;        //movement values. moveSpeed modifies these
     Vector3 moveDirection;
 
     [Header("Inputs")]
@@ -22,10 +23,13 @@ public class Player : Robot
     void Start()
     {
         moveSpeed = baseMoveSpeed;
+        vx = 0;
+        vy = 0;
+        vz = 0;
     }
 
    
-    void OnEnable()
+    /*void OnEnable()
     {
         move = playerControls.Player.Movement;
         move.Enable();
@@ -40,17 +44,17 @@ public class Player : Robot
     {
         move.Disable();
         fireWeapon.Disable();
-    }
+    }*/
 
     //FixedUpdate is for any physics involving rigidbodies. Player movement and possibly other actions go in here.
     void FixedUpdate()
     {
-
+        rb.velocity = new Vector3(vx, vy, vz);
     }
 
     void Update()
     {
-        
+        //rb.velocity = new Vector3()
     }
 
     #region Controls
@@ -60,6 +64,12 @@ public class Player : Robot
         {
             //move player forward
             Debug.Log("moved forward");
+            //rb.AddForce(Vector3.forward * moveSpeed, ForceMode.Force);
+            vz = moveSpeed;
+        }
+        else
+        {
+            vz = 0;
         }
     }
 
@@ -69,6 +79,11 @@ public class Player : Robot
         {
             //move player back
            Debug.Log("moved back");
+           vz = -moveSpeed;
+        }
+        else
+        {
+            vz = 0;
         }
         
     }
@@ -79,6 +94,11 @@ public class Player : Robot
         {
             //move player left
             Debug.Log("moved left");
+            vx = -moveSpeed;
+        }
+        else
+        {
+            vx = 0;
         }
 
     }
@@ -89,6 +109,11 @@ public class Player : Robot
         {
             //move player right
             Debug.Log("moved right");
+            vx = moveSpeed;
+        }
+        else
+        {
+            vx = 0;
         }
        
     }
